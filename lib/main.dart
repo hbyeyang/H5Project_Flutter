@@ -48,8 +48,8 @@ class Homepage extends StatelessWidget {
     "H5美图",
     "H5视频",
     "H5聚合",
-    "H5菜谱",
     "H5漫画",
+    "H5菜谱",
     "H5图文",
     "H5备用"
   ];
@@ -238,12 +238,12 @@ class Homepage extends StatelessWidget {
       for (var value in urlData) {
         var type = value['type'];
 //        print(value['uv']);
-        String uv = value['uv'].toString();
-//
-        if (int.parse(uv) < 100) {
-          //链接访问数小于100不统计
-          break;
-        }
+//        String uv = value['uv'].toString();
+////
+//        if (int.parse(uv) < 100) {
+//          //链接访问数小于100不统计
+//          break;
+//        }
         switch (type) {
           case 1:
             ReadList.add(value);
@@ -269,13 +269,13 @@ class Homepage extends StatelessWidget {
         }
       }
     }
-    sortList(ReadList);
-    sortList(AggList);
-    sortList(PicList);
-    sortList(VideoList);
-    sortList(CartoonList);
-    sortList(CookbookList);
-    sortList(ImageTextList);
+//    sortList(ReadList);
+//    sortList(AggList);
+//    sortList(PicList);
+//    sortList(VideoList);
+//    sortList(CartoonList);
+//    sortList(CookbookList);
+//    sortList(ImageTextList);
     printListCount();
   }
 
