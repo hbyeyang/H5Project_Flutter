@@ -7,7 +7,10 @@ class NetUrlBeanEntity {
   NetUrlBeanEntity.fromJson(Map<String, dynamic> json) {
     ret = json['ret'];
     if (json['data'] != null) {
-      data = new List<NetUrlBeanData>();(json['data'] as List).forEach((v) { data.add(new NetUrlBeanData.fromJson(v)); });
+      data = new List<NetUrlBeanData>();
+      (json['data'] as List).forEach((v) {
+        data.add(new NetUrlBeanData.fromJson(v));
+      });
     }
   }
 
@@ -15,25 +18,23 @@ class NetUrlBeanEntity {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['ret'] = this.ret;
     if (this.data != null) {
-      data['data'] =  this.data.map((v) => v.toJson()).toList();
+      data['data'] = this.data.map((v) => v.toJson()).toList();
     }
     return data;
   }
 }
 
 class NetUrlBeanData {
-  int uv;
-  int pv;
+  String uv;
+  String pv;
   String name;
   int type;
   String url;
-
 
   @override
   String toString() {
     return 'NetUrlBeanData{uv: $uv, pv: $pv, name: $name, type: $type, url: $url}';
   }
-
 
   NetUrlBeanData(this.uv, this.pv, this.name, this.type, this.url);
 
@@ -54,5 +55,4 @@ class NetUrlBeanData {
     data['url'] = this.url;
     return data;
   }
-
 }
