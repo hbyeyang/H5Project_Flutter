@@ -1,9 +1,11 @@
 import 'dart:convert';
 
 import 'package:demo_test/bean/pageBean.dart';
+import 'package:demo_test/bean/standbyBean.dart';
 import 'package:demo_test/net/httpApi.dart';
 import 'package:demo_test/page/details.dart';
 import 'package:demo_test/page/listpage.dart';
+import 'package:demo_test/page/standby.dart';
 import 'package:demo_test/util/loghelper.dart';
 import 'package:demo_test/util/utils.dart';
 import 'package:flutter/material.dart';
@@ -22,12 +24,14 @@ void main() {
       // When we navigate to the "/second" route, build the SecondScreen Widget
       '/listpage': (BuildContext context) => ListPage(),
       '/details': (BuildContext context) => Deatails(),
+      '/standby': (BuildContext context) => Standby(),
     },
   ));
 }
 
 const listpage = "/listpage";
 const details = "/details";
+const standby = "/standby";
 
 List<dynamic> ReadList = new List(); //小说
 List<dynamic> PicList = new List(); //美图
@@ -168,7 +172,9 @@ class Homepage extends StatelessWidget {
                     lunchList(context, index, "图文列表页面", ImageTextList);
                     break;
                   case 8:
-                    lunchList(context, index, "备用页面", null);
+                    Navigator.pushNamed(context, standby,
+                        arguments: StandbyBean("备用代码",
+                            "http://t.alpha.channel.45xie.com/ad.html"));
                     break;
                 }
               },
