@@ -26,7 +26,9 @@ dependencies:
   fluttertoast: ^2.1.1 #toast提示框
 #  fluro: ^1.5.1 #路由管理
 #  flutter_webview_plugin: ^0.2.1+2
-  flutter_webview_plugin: ^0.2.0
+#  flutter_webview_plugin: ^0.2.0
+  flutter_webview_plugin: ^0.3.4
+#  webview_flutter: ^0.2.0
   dio: ^2.0.9
 
 #  rxdart: ^0.18.1

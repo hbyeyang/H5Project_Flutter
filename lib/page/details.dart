@@ -24,10 +24,10 @@ class Deatails extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     _deatailsBean = ModalRoute.of(context).settings.arguments;
-//    if (!_deatailsBean.details['url'].startsWith("http")) {
-//      _url = "http://" + _deatailsBean.details['url'];
-//    }
-    _url = "https://juejin.im/post/5c452bac6fb9a049af6d919a#heading-3";
+    if (!_deatailsBean.details['url'].startsWith("http")) {
+      _url = "http://" + _deatailsBean.details['url'];
+    }
+//    _url = "https://juejin.im/post/5c452bac6fb9a049af6d919a#heading-3";
     print("页面地址：" + _url);
     List<Widget> titleContent = [];
     titleContent.add(new Text(
