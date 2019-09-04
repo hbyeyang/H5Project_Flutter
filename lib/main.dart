@@ -89,7 +89,17 @@ class Homepage extends StatelessWidget {
 //      print("errrr"+err);
 //      MyToastUtils(err);
 //    });
-
+    if (ReadList.length != 0 ||
+        PicList.length != 0 ||
+        AggList.length != 0 ||
+        VideoList.length != 0 ||
+        CartoonList.length != 0 ||
+        CookbookList.length != 0 ||
+        ImageTextList.length != 0) {
+      //如果集合中有数据了，直接返回，不再请求
+      printListCount();
+      return;
+    }
     HttpApi.instance.getData(
       success: (data) {
         final body = json.decode(data.toString());
@@ -116,6 +126,7 @@ class Homepage extends StatelessWidget {
   }
 
   ListView buildListView() {
+    getData();
     return ListView.builder(
         itemExtent: 70.0,
         itemCount: items.length,
@@ -129,17 +140,6 @@ class Homepage extends StatelessWidget {
               onTap: () {
                 if (items[index].contains("H5链接数")) {
                   MyToastUtils(items[index]);
-                  if (ReadList.length != 0 ||
-                      PicList.length != 0 ||
-                      AggList.length != 0 ||
-                      VideoList.length != 0 ||
-                      CartoonList.length != 0 ||
-                      CookbookList.length != 0 ||
-                      ImageTextList.length != 0) {
-                    //如果集合中有数据了，直接返回，不再请求
-                    printListCount();
-                    return;
-                  }
                   getData();
                   return;
                 }
@@ -244,12 +244,12 @@ class Homepage extends StatelessWidget {
       for (var value in urlData) {
         var type = value['type'];
 //        print(value['uv']);
-//        String uv = value['uv'].toString();
+        String uv = value['uv'].toString();
 ////
-//        if (int.parse(uv) < 100) {
-//          //链接访问数小于100不统计
-//          break;
-//        }
+        if (int.parse(uv) < 50) {
+          //链接访问数小于50不统计
+          continue;
+        }
         switch (type) {
           case 1:
             ReadList.add(value);
@@ -275,21 +275,57 @@ class Homepage extends StatelessWidget {
         }
       }
     }
-//    sortList(ReadList);
-//    sortList(AggList);
-//    sortList(PicList);
-//    sortList(VideoList);
-//    sortList(CartoonList);
-//    sortList(CookbookList);
-//    sortList(ImageTextList);
+    sortList(ReadList);
+    sortList(AggList);
+    sortList(PicList);
+    sortList(VideoList);
+    sortList(CartoonList);
+    sortList(CookbookList);
+    sortList(ImageTextList);
+    "链接数：（" +
+        (ReadList.length +
+                PicList.length +
+                AggList.length +
+                VideoList.length +
+                CartoonList.length +
+                CookbookList.length +
+                ImageTextList.length)
+            .toString() +
+        "）";
+//    items = [
+//      items[0] +
+//          "（链接数：" +
+//          (ReadList.length +
+//                  PicList.length +
+//                  AggList.length +
+//                  VideoList.length +
+//                  CartoonList.length +
+//                  CookbookList.length +
+//                  ImageTextList.length)
+//              .toString() +
+//          "）",
+//      items[1] + "（链接数：" + ReadList.length.toString() + "）",
+//      items[2] + "（链接数：" + PicList.length.toString() + "）",
+//      items[3] + "（链接数：" + VideoList.length.toString() + "）",
+//      items[4] + "（链接数：" + AggList.length.toString() + "）",
+//      items[5] + "（链接数：" + CartoonList.length.toString() + "）",
+//      items[6] + "（链接数：" + CookbookList.length.toString() + "）",
+//      items[7] + "（链接数：" + ImageTextList.length.toString() + "）",
+//      items[8] + "（备用）",
+//    ];
     printListCount();
   }
 
   void sortList(list) {
     print("排序");
+    //升序
+//    list.sort((a, b) =>
+//        int.parse(a['uv'].toString()).compareTo(int.parse(b['uv'].toString())));
+
+    //降序
     list.sort((a, b) =>
-        int.parse(a['uv'].toString()).compareTo(int.parse(b['uv'].toString())));
-    log.info(ReadList.toString());
+        int.parse(b['uv'].toString()).compareTo(int.parse(a['uv'].toString())));
+//    log.info(ReadList.toString());
   }
 
   void printListCount() {
