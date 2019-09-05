@@ -184,7 +184,7 @@ class ListPage extends StatelessWidget {
       MyToastUtils("内容为空，请返回重试");
     }
     MyToastUtils(dynamic['name']);
-    Navigator.pushNamed(context, details,
+    Navigator.pushNamed(context, detailsPage,
         arguments: DetailsBean(title, dynamic));
   }
 }

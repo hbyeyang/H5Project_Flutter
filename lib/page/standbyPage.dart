@@ -2,7 +2,7 @@ import 'package:demo_test/bean/standbyBean.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
 
-class Standby extends StatelessWidget {
+class StandbyPage extends StatelessWidget {
   StandbyBean _standbyBean;
   String _title;
   String _url;

@@ -2,7 +2,7 @@ import 'package:demo_test/bean/detailsBean.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
 
-class Deatails extends StatelessWidget {
+class DeatailsPage extends StatelessWidget {
   DetailsBean _deatailsBean;
   String _url;
 
