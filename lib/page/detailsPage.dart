@@ -41,13 +41,13 @@ class WebPageState extends State<DeatailsPage> {
     }
 //    _url = "https://juejin.im/post/5c452bac6fb9a049af6d919a#heading-3";
     print("页面地址：" + netUrl);
-    List<Widget> titleContent = [];
-    titleContent.add(new Text(
-//      "详情页面",
-      deatailsBean.title,
-      style: new TextStyle(color: Colors.white),
-    ));
-    titleContent.add(new Container(width: 50.0));
+//    List<Widget> titleContent = [];
+//    titleContent.add(new Text(
+////      "详情页面",
+//      deatailsBean.title,
+//      style: new TextStyle(color: Colors.white),
+//    ));
+//    titleContent.add(new Container(width: 50.0));
     // WebviewScaffold是插件提供的组件，用于在页面上显示一个WebView并加载URL
     return new WebviewScaffold(
 //      url: "https://blog.csdn.net/dickyqie",
@@ -66,7 +66,7 @@ class WebPageState extends State<DeatailsPage> {
 
       appBar: BaseViewBar(
         childView: BaseTitleBar(
-          "详情页面",
+          deatailsBean.title,
           leftIcon: Icons.arrow_back,
           rightText: "刷新",
           rightClick: () {
@@ -79,7 +79,7 @@ class WebPageState extends State<DeatailsPage> {
         preferredSize: Size.fromHeight(50.0),
       ),
       withZoom: true,
-      // 允许网页缩放
+      // 允许网
       withLocalStorage: true,
       // 允许LocalStorage
       withJavascript: true, // 允许执行js代码
