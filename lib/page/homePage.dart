@@ -14,6 +14,7 @@ List<dynamic> CartoonList = new List(); //漫画
 List<dynamic> CookbookList = new List(); //菜谱
 List<dynamic> ImageTextList = new List(); //图文
 List<dynamic> BeautyList = new List(); //美妆
+List<dynamic> CarList = new List(); //汽车
 List<dynamic> StandbyList = new List(); //备用
 
 class HomePage extends StatelessWidget {
@@ -28,6 +29,7 @@ class HomePage extends StatelessWidget {
     "H5菜谱",
     "H5图文",
     "H5美妆",
+    "H5汽车",
     "H5备用"
   ];
 
@@ -59,6 +61,7 @@ class HomePage extends StatelessWidget {
           "H5菜谱",
           "H5图文",
           "H5美妆",
+          "H5汽车",
           "H5备用"
         ];
         setItems();
@@ -94,6 +97,7 @@ class HomePage extends StatelessWidget {
     CookbookList.clear();
     ImageTextList.clear();
     BeautyList.clear();
+    CarList.clear();
   }
 
   ListView buildListView() {
@@ -144,6 +148,9 @@ class HomePage extends StatelessWidget {
                     lunchList(context, index, "美妆列表页面", BeautyList);
                     break;
                   case 9:
+                    lunchList(context, index, "汽车列表页面", CarList);
+                    break;
+                  case 10:
                     Navigator.pushNamed(context, standbyPage,
                         arguments: StandbyBean("备用代码",
                             "http://t.alpha.channel.45xie.com/ad.html"));
@@ -209,6 +216,9 @@ class HomePage extends StatelessWidget {
           case 8:
             BeautyList.add(value);
             break;
+          case 9:
+            CarList.add(value);
+            break;
         }
       }
     }
@@ -220,6 +230,7 @@ class HomePage extends StatelessWidget {
     sortList(CookbookList);
     sortList(ImageTextList);
     sortList(BeautyList);
+    sortList(CarList);
 //    "链接数：（" +
 //        (ReadList.length +
 //                PicList.length +
@@ -245,7 +256,8 @@ class HomePage extends StatelessWidget {
                   CartoonList.length +
                   CookbookList.length +
                   ImageTextList.length +
-                  BeautyList.length)
+                  BeautyList.length +
+                  CarList.length)
               .toString() +
           "）",
       items[1] + "（链接数：" + ReadList.length.toString() + "）",
@@ -256,7 +268,8 @@ class HomePage extends StatelessWidget {
       items[6] + "（链接数：" + CookbookList.length.toString() + "）",
       items[7] + "（链接数：" + ImageTextList.length.toString() + "）",
       items[8] + "（链接数：" + BeautyList.length.toString() + "）",
-      items[9] + "（备用）",
+      items[9] + "（链接数：" + CarList.length.toString() + "）",
+      items[10] + "（备用）",
     ];
   }
 
@@ -285,5 +298,6 @@ class HomePage extends StatelessWidget {
     print(CookbookList.length);
     print(ImageTextList.length);
     print(BeautyList.length);
+    print(CarList.length);
   }
 }
