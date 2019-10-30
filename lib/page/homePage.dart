@@ -15,6 +15,8 @@ List<dynamic> CookbookList = new List(); //菜谱
 List<dynamic> ImageTextList = new List(); //图文
 List<dynamic> BeautyList = new List(); //美妆
 List<dynamic> CarList = new List(); //汽车
+List<dynamic> GoldList = new List(); //砸金蛋
+List<dynamic> NewPicList = new List(); //新美图
 List<dynamic> StandbyList = new List(); //备用
 
 class HomePage extends StatelessWidget {
@@ -30,6 +32,8 @@ class HomePage extends StatelessWidget {
     "H5图文",
     "H5美妆",
     "H5汽车",
+    "H5砸金蛋",
+    "H5新美图",
     "H5备用"
   ];
 
@@ -62,6 +66,8 @@ class HomePage extends StatelessWidget {
           "H5图文",
           "H5美妆",
           "H5汽车",
+          "H5金蛋",
+          "H5新美图",
           "H5备用"
         ];
         setItems();
@@ -98,6 +104,8 @@ class HomePage extends StatelessWidget {
     ImageTextList.clear();
     BeautyList.clear();
     CarList.clear();
+    GoldList.clear();
+    NewPicList.clear();
   }
 
   ListView buildListView() {
@@ -151,9 +159,17 @@ class HomePage extends StatelessWidget {
                     lunchList(context, index, "汽车列表页面", CarList);
                     break;
                   case 10:
+                    lunchList(context, index, "砸金蛋列表页面", GoldList);
+                    break;
+                  case 11:
+                    lunchList(context, index, "新美图列表页面", NewPicList);
+                    break;
+                  case 12:
                     Navigator.pushNamed(context, standbyPage,
-                        arguments: StandbyBean("备用代码",
-                            "http://t.alpha.channel.45xie.com/ad.html"));
+                        arguments: StandbyBean(
+                            "备用代码",
+//                            "http://t.alpha.channel.45xie.com/ad.html"));
+                            "http://t.alpha.channel.45xie.com/cookbook/home.html?appid=B428109E4AA4E883DB8B1877BFF3575F"));
                     break;
                 }
               },
@@ -219,6 +235,12 @@ class HomePage extends StatelessWidget {
           case 9:
             CarList.add(value);
             break;
+          case 10:
+            GoldList.add(value);
+            break;
+          case 11:
+            NewPicList.add(value);
+            break;
         }
       }
     }
@@ -231,6 +253,8 @@ class HomePage extends StatelessWidget {
     sortList(ImageTextList);
     sortList(BeautyList);
     sortList(CarList);
+    sortList(GoldList);
+    sortList(NewPicList);
 //    "链接数：（" +
 //        (ReadList.length +
 //                PicList.length +
@@ -257,7 +281,9 @@ class HomePage extends StatelessWidget {
                   CookbookList.length +
                   ImageTextList.length +
                   BeautyList.length +
-                  CarList.length)
+                  CarList.length +
+                  GoldList.length +
+                  NewPicList.length)
               .toString() +
           "）",
       items[1] + "（链接数：" + ReadList.length.toString() + "）",
@@ -269,7 +295,9 @@ class HomePage extends StatelessWidget {
       items[7] + "（链接数：" + ImageTextList.length.toString() + "）",
       items[8] + "（链接数：" + BeautyList.length.toString() + "）",
       items[9] + "（链接数：" + CarList.length.toString() + "）",
-      items[10] + "（备用）",
+      items[10] + "（链接数：" + GoldList.length.toString() + "）",
+      items[11] + "（链接数：" + NewPicList.length.toString() + "）",
+      items[12] + "（备用）",
     ];
   }
 
@@ -299,5 +327,7 @@ class HomePage extends StatelessWidget {
     print(ImageTextList.length);
     print(BeautyList.length);
     print(CarList.length);
+    print(GoldList.length);
+    print(NewPicList.length);
   }
 }
