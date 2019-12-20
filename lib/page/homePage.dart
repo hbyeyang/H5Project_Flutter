@@ -17,6 +17,8 @@ List<dynamic> BeautyList = new List(); //美妆
 List<dynamic> CarList = new List(); //汽车
 List<dynamic> GoldList = new List(); //砸金蛋
 List<dynamic> NewPicList = new List(); //新美图
+List<dynamic> CatList = new List(); //养猫游戏
+List<dynamic> LifeList = new List(); //生活
 List<dynamic> StandbyList = new List(); //备用
 
 class HomePage extends StatelessWidget {
@@ -34,6 +36,8 @@ class HomePage extends StatelessWidget {
     "H5汽车",
     "H5砸金蛋",
     "H5新美图",
+    "养猫游戏",
+    "生活",
     "H5备用"
   ];
 
@@ -68,6 +72,8 @@ class HomePage extends StatelessWidget {
           "H5汽车",
           "H5金蛋",
           "H5新美图",
+          "养猫游戏",
+          "H5生活",
           "H5备用"
         ];
         setItems();
@@ -105,6 +111,8 @@ class HomePage extends StatelessWidget {
     BeautyList.clear();
     CarList.clear();
     GoldList.clear();
+    CatList.clear();
+    LifeList.clear();
     NewPicList.clear();
   }
 
@@ -165,6 +173,12 @@ class HomePage extends StatelessWidget {
                     lunchList(context, index, "新美图列表页面", NewPicList);
                     break;
                   case 12:
+                    lunchList(context, index, "养猫游戏列表页面", CatList);
+                    break;
+                  case 13:
+                    lunchList(context, index, "生活列表页面", LifeList);
+                    break;
+                  case 14:
                     Navigator.pushNamed(context, standbyPage,
                         arguments: StandbyBean(
                             "备用代码",
@@ -203,10 +217,10 @@ class HomePage extends StatelessWidget {
       for (var value in urlData) {
         var type = value['type'];
         String uv = value['uv'].toString();
-        if (int.parse(uv) < 50) {
-          //链接访问数小于50不统计
-          continue;
-        }
+//        if (int.parse(uv) < 50) {
+//          //链接访问数小于50不统计
+//          continue;
+//        }
         switch (type) {
           case 1:
             ReadList.add(value);
@@ -241,6 +255,12 @@ class HomePage extends StatelessWidget {
           case 11:
             NewPicList.add(value);
             break;
+          case 12:
+            CatList.add(value);
+            break;
+          case 13:
+            LifeList.add(value);
+            break;
         }
       }
     }
@@ -255,6 +275,8 @@ class HomePage extends StatelessWidget {
     sortList(CarList);
     sortList(GoldList);
     sortList(NewPicList);
+    sortList(CatList);
+    sortList(LifeList);
 //    "链接数：（" +
 //        (ReadList.length +
 //                PicList.length +
@@ -283,7 +305,9 @@ class HomePage extends StatelessWidget {
                   BeautyList.length +
                   CarList.length +
                   GoldList.length +
-                  NewPicList.length)
+                  NewPicList.length +
+                  CatList.length +
+                  LifeList.length)
               .toString() +
           "）",
       items[1] + "（链接数：" + ReadList.length.toString() + "）",
@@ -297,7 +321,9 @@ class HomePage extends StatelessWidget {
       items[9] + "（链接数：" + CarList.length.toString() + "）",
       items[10] + "（链接数：" + GoldList.length.toString() + "）",
       items[11] + "（链接数：" + NewPicList.length.toString() + "）",
-      items[12] + "（备用）",
+      items[12] + "（链接数：" + CatList.length.toString() + "）",
+      items[13] + "（链接数：" + LifeList.length.toString() + "）",
+      items[14] + "（备用）",
     ];
   }
 
@@ -329,5 +355,7 @@ class HomePage extends StatelessWidget {
     print(CarList.length);
     print(GoldList.length);
     print(NewPicList.length);
+    print(CatList.length);
+    print(LifeList.length);
   }
 }
